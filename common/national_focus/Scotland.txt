@@ -1,0 +1,73 @@
+focus_tree { 
+
+	id = scotland_focus
+
+	country = {
+
+		factor = 0 
+
+		modifier = {
+			add = 17
+			OR = {
+				tag = SCO
+			}
+		}
+	}
+
+	focus = {
+		id = SCO_empower_holyrood
+		icon = demand_territory2
+		x = 8
+		y = 0
+		cost = 10
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_revitalise_scottish_industry
+		icon = consumer_goods
+		x = 3
+		y = 0
+		cost = 10
+
+		completion_reward = {
+			air_experience = 30
+			add_tech_bonus = {
+				bonus = 0.2
+				uses = 4
+				category = industry
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_test
+		icon = demand_territory2
+		x = 8
+		y = 1
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_empower_holyrood
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
