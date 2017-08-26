@@ -1,0 +1,14 @@
+ideas = {
+	country = {
+		idea_nordic_council_member = {
+			picture = NC_member
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.1
+			}
+		}
+	}
+}

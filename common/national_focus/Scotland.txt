@@ -22,19 +22,21 @@ focus_tree {
 	@industrial_r2 = 5
 	@industrial_r3 = 6
 
-	@politics_l7 = 7
-	@politics_l6 = 8
-	@politics_l5 = 9
-	@politics_l4 = 10
-	@politics_l3 = 11
-	@politics_l2 = 12
-	@politics_l1 = 13
-	@politics_c = 14
-	@politics_r1 = 15
-	@politics_r2 = 16
-	@politics_r3 = 17
-	@politics_r4 = 18
-	@politics_r5 = 19
+	@politics_l9 = 9
+	@politics_l8 = 10
+	@politics_l7 = 11
+	@politics_l6 = 12
+	@politics_l5 = 13
+	@politics_l4 = 14
+	@politics_l3 = 15
+	@politics_l2 = 16
+	@politics_l1 = 17
+	@politics_c = 18
+	@politics_r1 = 19
+	@politics_r2 = 20
+	@politics_r3 = 21
+	@politics_r4 = 22
+	@politics_r5 = 23
 
 	##########################################################
 						##INDUSTRY##
@@ -224,7 +226,7 @@ focus_tree {
 	focus = {
 		id = SCO_foreign_policy
 		icon = alliance
-		x = @politics_l3
+		x = @politics_l4
 		y = 1
 		cost = 10
 
@@ -267,6 +269,10 @@ focus_tree {
 		x = @politics_l1
 		y = 2
 		cost = 10
+
+		mutually_exclusive = {
+			focus = SCO_a_new_path
+		}
 
 		prerequisite = {
 			focus = SCO_foreign_policy
@@ -344,9 +350,13 @@ focus_tree {
 	focus = {
 		id = SCO_a_new_path
 		icon = improve_relations
-		x = @politics_l5
+		x = @politics_l6
 		y = 2
 		cost = 10
+
+		mutually_exclusive = {
+			focus = SCO_the_old_path
+		}
 
 		prerequisite = {
 			focus = SCO_foreign_policy
@@ -372,8 +382,53 @@ focus_tree {
 			focus = SCO_a_new_path
 		}
 
+		mutually_exclusive{
+			focus = SCO_approach_the_CSTO
+			focus = SCO_our_own_faction
+		}
+
 		completion_reward = {
 			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_nordic_trade_agreements
+		icon = improve_relations
+		x = @politics_l4
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_approach_the_nordic_council
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_join_nordic_council
+		icon = improve_relations
+		x = @politics_l4
+		y = 5
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_nordic_trade_agreements
+		}
+
+		completion_reward = {
+			add_ideas = idea_nordic_council_member
 		}
 
 		ai_will_do = {
@@ -387,6 +442,77 @@ focus_tree {
 		x = @politics_l6
 		y = 3
 		cost = 10
+
+		mutually_exclusive{
+			focus = SCO_approach_the_nordic_council
+			focus = SCO_our_own_faction
+		}
+
+		prerequisite = {
+			focus = SCO_a_new_path
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_draw_closer_to_east
+		icon = align_to_russia
+		x = @politics_l6
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_approach_the_CSTO
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_join_CSTO
+		icon = align_to_russia
+		x = @politics_l6
+		y = 5
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_draw_closer_to_east
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+
+	focus = {
+		id = SCO_our_own_faction
+		icon = improve_relations
+		x = @politics_l8
+		y = 3
+		cost = 10
+
+		mutually_exclusive{
+			focus = SCO_approach_the_nordic_council
+			focus = SCO_approach_the_CSTO
+		}
 
 		prerequisite = {
 			focus = SCO_a_new_path

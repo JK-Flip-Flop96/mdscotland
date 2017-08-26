@@ -7,10 +7,15 @@
   SCO_rejoin_NATO:0 "Rejoin NATO"
   SCO_rejoin_EU:0 "Rejoin the EU"
 
-  SCO_reaafirm_UK:0 "Reaffirm the UK"
+  SCO_reaafirm_UK:0 "Reaffirm British Isles Defence"
 
   SCO_a_new_path:0 "A New Path"
+  SCO_our_own_faction:0 "Found our own Defence Pact"
   SCO_approach_the_CSTO:0 "Approach the CSTO"
+  SCO_draw_closer_to_east:0 "Draw Closer to the East"
+  SCO_join_CSTO:0 "Attempt to join the CSTO"
   SCO_approach_the_nordic_council:0 "Approach the Nordic Council"
+  SCO_nordic_trade_agreements:0 "Nordic Trade Agreements"
+  SCO_join_nordic_council:0 "Attempt to join the Nordic Council"
 
-  SCO_revitalise_scottish_industry:0 "Revitalise the Scottich Industry"
+  SCO_revitalise_scottish_industry:0 "Revitalise the Scottish Industry"
