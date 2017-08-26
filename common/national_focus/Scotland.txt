@@ -14,10 +14,201 @@ focus_tree {
 		}
 	}
 
+	@industrial_l3 = 0
+	@industrial_l2 = 1
+	@industrial_l1 = 2
+	@industrial_c = 3
+	@industrial_r1 = 4
+	@industrial_r2 = 5
+	@industrial_r3 = 6
+
+	@politics_l7 = 7
+	@politics_l6 = 8
+	@politics_l5 = 9
+	@politics_l4 = 10
+	@politics_l3 = 11
+	@politics_l2 = 12
+	@politics_l1 = 13
+	@politics_c = 14
+	@politics_r1 = 15
+	@politics_r2 = 16
+	@politics_r3 = 17
+	@politics_r4 = 18
+	@politics_r5 = 19
+
+	##########################################################
+						##INDUSTRY##
+	##########################################################
+
+	focus = {
+		id = SCO_revitalise_scottish_industry
+		icon = production
+		x = @industrial_c
+		y = 0
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = industry_bonus
+				bonus = 0.35
+				uses = 2
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = SCO_military_industry_1
+		icon = industry_military
+		x = @industrial_l3
+		y = 1
+		cost = 10
+		
+		prerequisite = {
+			focus = SCO_revitalise_scottish_industry
+		}
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = production_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = arms_factory
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = SCO_civilian_industry_1
+		icon = industry_civilian
+		x = @industrial_l1
+		y = 1
+		cost = 10
+		
+		prerequisite = {
+			focus = SCO_revitalise_scottish_industry
+		}
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = SCO_infrastructure_1
+		icon = infrastructure
+		x = @industrial_r1
+		y = 1
+		cost = 10
+		
+		prerequisite = {
+			focus = SCO_revitalise_scottish_industry
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = SCO_resource_focus
+		icon = construction2
+		x = @industrial_r3
+		y = 1
+		cost = 10
+		
+		prerequisite = {
+			focus = SCO_revitalise_scottish_industry
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	##########################################################
+						##POLITICS##
+	##########################################################
+
 	focus = {
 		id = SCO_empower_holyrood
 		icon = demand_territory2
-		x = 8
+		x = @politics_c
 		y = 0
 		cost = 10
 
@@ -31,19 +222,18 @@ focus_tree {
 	}
 
 	focus = {
-		id = SCO_revitalise_scottish_industry
-		icon = consumer_goods
-		x = 3
-		y = 0
+		id = SCO_foreign_policy
+		icon = alliance
+		x = @politics_l3
+		y = 1
 		cost = 10
 
+		prerequisite = {
+			focus = SCO_empower_holyrood
+		}
+
 		completion_reward = {
-			air_experience = 30
-			add_tech_bonus = {
-				bonus = 0.2
-				uses = 4
-				category = industry
-			}
+			add_political_power = 150
 		}
 
 		ai_will_do = {
@@ -52,14 +242,154 @@ focus_tree {
 	}
 
 	focus = {
-		id = SCO_test
-		icon = demand_territory2
-		x = 8
+		id = SCO_internal_policy
+		icon = anschluss
+		x = @politics_r3
 		y = 1
 		cost = 10
 
 		prerequisite = {
 			focus = SCO_empower_holyrood
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_the_old_path
+		icon = improve_relations
+		x = @politics_l1
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_foreign_policy
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_rejoin_EU
+		icon = align_to_europe
+		x = @politics_c
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_the_old_path
+		}
+
+		completion_reward = {
+			EU_membership_application = yes
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_rejoin_NATO
+		icon = align_to_nato
+		x = @politics_l2
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_the_old_path
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_reaafirm_UK
+		icon = align_to_britain
+		x = @politics_l2
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_rejoin_NATO
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_a_new_path
+		icon = improve_relations
+		x = @politics_l5
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_foreign_policy
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_approach_the_nordic_council
+		icon = improve_relations
+		x = @politics_l4
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_a_new_path
+		}
+
+		completion_reward = {
+			add_political_power = 150
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = SCO_approach_the_CSTO
+		icon = align_to_russia
+		x = @politics_l6
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SCO_a_new_path
 		}
 
 		completion_reward = {
